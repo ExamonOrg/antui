@@ -1,7 +1,7 @@
-import { Tag, Modal } from 'antd';
+import { Tag, Modal, Breadcrumb } from 'antd';
 import { useState } from 'react';
 
-const ConceptTag = ({ name, card, videoCard }) => {
+const ConceptTag = ({ name, category, card, videoCard }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => setIsModalOpen(true);
     const handleOk = () => setIsModalOpen(false);
@@ -9,12 +9,26 @@ const ConceptTag = ({ name, card, videoCard }) => {
 
     return (
       <>
-        <Tag style={{"cursor": "pointer"}} onClick={showModal}>{name}</Tag>
+        <Tag style={{ cursor: "pointer" }} onClick={showModal}>
+          {name}
+        </Tag>
         <Modal
-          title={name}
+          title={
+            <Breadcrumb
+              items={[
+                {
+                  title: category,
+                },
+                {
+                  title: name,
+                },
+              ]}
+            />
+          }
           open={isModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}
+          footer={null}
         >
           {card}
           {videoCard}

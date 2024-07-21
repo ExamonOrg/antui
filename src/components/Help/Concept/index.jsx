@@ -11,7 +11,6 @@ const conceptTagFactory = (name) => {
         videoCard={<VideoCard videos={["LWdsF79H1Pg"]} />}
         card={
           <ConceptCard
-            title="print"
             examples={[
               {
                 code: "print('Hello, World!')",
@@ -37,6 +36,7 @@ const conceptTagFactory = (name) => {
         card={
           <ConceptCard
             title="str"
+            category="builtin"
             examples={[
               {
                 code: "str(5)",
@@ -76,6 +76,7 @@ const conceptTagFactory = (name) => {
         card={
           <ConceptCard
             title="string literal"
+            category="datatype"
             examples={[
               {
                 code: "'Hello, World!'",
@@ -111,6 +112,7 @@ const conceptTagFactory = (name) => {
         card={
           <ConceptCard
             title="Standard Out"
+            category="IO"
             examples={[
               {
                 code: "print('Hello, World!')",

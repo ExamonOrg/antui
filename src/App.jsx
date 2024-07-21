@@ -71,37 +71,31 @@ const App = () => {
           <Flex justify="space-between">
             <h2>What does the code print to standard out?</h2>
           </Flex>
-
-          <Space>
-            {["print", "string literal", "standard out"].map((concept) =>
-              conceptTagFactory(concept)
-            )}
-          </Space>
         </div>
       }
       size="large"
     >
-      {/* <Space>
-          <PlayCircleOutlined onClick={null} />
-          <ShareAltOutlined />
-          <SettingOutlined />
-        </Space> */}
+      <Flex justify="space-between">
+        <Space>
+          {["print", "string literal", "standard out"].map((concept) =>
+            conceptTagFactory(concept)
+          )}
+        </Space>
+        <Flex gap="middle" align="center">
+          <DislikeOutlined />
+          <MehOutlined />
+          <FrownOutlined />
+          <SmileOutlined />
+        </Flex>
+      </Flex>
       <SyntaxHighlighter
         language="python"
         wrapLines={true}
         wrapLongLines={true}
         showLineNumbers={false}
       >
-        print("Hello, World!")
+        {'def f1():\n    return "Hello, World!"\n\nprint(f1())'}
       </SyntaxHighlighter>
-
-      {/* <Flex gap="middle" align="center">
-        <SmileOutlined />
-        <MehOutlined />
-        <FrownOutlined />
-        <DislikeOutlined />
-      </Flex>
-      <Divider /> */}
 
       <Space direction="vertical" size="middle" style={{ display: "flex" }}>
         {options.map((option) => (
@@ -128,7 +122,6 @@ const App = () => {
           <Content style={contentStyle}>
             <NavBar />
             {coreApp}
-
             <HelpMe callBack={showModal} />
           </Content>
           <Footer style={footerStyle}>Examon</Footer>
@@ -139,6 +132,7 @@ const App = () => {
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        footer={null}
       >
         <RosettaCard
           transaltions={[
@@ -147,7 +141,7 @@ const App = () => {
               language: "python",
             },
             {
-              code: 'console.log(\"Hello, World!\")',
+              code: 'console.log("Hello, World!")',
               language: "javascript",
             },
             {

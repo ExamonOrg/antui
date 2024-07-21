@@ -1,9 +1,19 @@
-import { Card } from "antd";
+import { Card, Breadcrumb } from "antd";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
-const ConceptCard = ({ examples }) => {
+const ConceptCard = ({ title, category, examples }) => {
   return (
-    <Card title="Code Examples">
+    <div>
+      <Breadcrumb
+        items={[
+          {
+            title: category,
+          },
+          {
+            title: title,
+          },
+        ]}
+      />
       {examples.map((example) => {
         return (
           <div>
@@ -19,7 +29,7 @@ const ConceptCard = ({ examples }) => {
           </div>
         );
       })}
-    </Card>
+    </div>
   );
 };
 

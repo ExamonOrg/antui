@@ -1,7 +1,7 @@
 import { Card } from "antd";
 import Iframe from "react-iframe";
 
-const VideoCard = ({ videos }) => {
+const Video = ({ videos }) => {
   return (
     videos.length > 0 && (
       <Card title="Videos">
@@ -24,4 +24,4 @@ const VideoCard = ({ videos }) => {
   );
 };
 
-export default VideoCard;
+export default Video;

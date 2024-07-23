@@ -1,5 +1,5 @@
 import ConceptCard from "./Card";
-import VideoCard from "./VideoCard";
+import VideoCard from "../Video";
 import ConceptTag from "./Tag";
 
 const conceptTagFactory = (name) => {
@@ -8,7 +8,6 @@ const conceptTagFactory = (name) => {
       <ConceptTag
         name="print"
         category="builtin"
-        videoCard={<VideoCard videos={["LWdsF79H1Pg"]} />}
         card={
           <ConceptCard
             examples={[

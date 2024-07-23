@@ -6,14 +6,12 @@ import {
   Layout,
   Card,
   Flex,
-  FloatButton,
-  Divider,
 } from "antd";
 
 import AnswerQuestionButton from "./components/AnswerQuestionButton";
 import HelpMe from "./components/HelpMe";
 import NavBar from "./components/NavBar";
-import RosettaCard from "./components/Help/Rosetta/Card";
+
 
 import {
   SmileOutlined,
@@ -23,17 +21,9 @@ import {
 } from "@ant-design/icons";
 
 import SyntaxHighlighter from "react-syntax-highlighter";
-// import ConceptCard from "./components/Help/Concept/Card";
-// import ConceptTag from "./components/Help/Concept/Tag";
 
-import {
-  SettingOutlined,
-  PlayCircleOutlined,
-  ShareAltOutlined,
-} from "@ant-design/icons";
 
 import conceptTagFactory from "./components/Help/Concept";
-import language from "react-syntax-highlighter/dist/esm/languages/hljs/1c";
 const { Header, Footer, Content } = Layout;
 
 const headerStyle = {};
@@ -50,11 +40,7 @@ const mockData = [
 
 const App = () => {
   const [options, setOptions] = useState(mockData);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => setIsModalOpen(true);
-  const handleOk = () => setIsModalOpen(false);
-  const handleCancel = () => setIsModalOpen(false);
 
   const callBack = () => {
     setOptions(
@@ -118,7 +104,6 @@ const App = () => {
     >
       <div className="App">
         <Layout style={layoutStyle}>
-          {/* <Header style={headerStyle}></Header> */}
           <Content style={contentStyle}>
             <NavBar />
             {coreApp}
@@ -127,34 +112,6 @@ const App = () => {
           <Footer style={footerStyle}>Examon</Footer>
         </Layout>
       </div>
-      <Modal
-        title="Help"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={null}
-      >
-        <RosettaCard
-          transaltions={[
-            {
-              code: 'print("Hello, World!")',
-              language: "python",
-            },
-            {
-              code: 'console.log("Hello, World!")',
-              language: "javascript",
-            },
-            {
-              code: "print 'Hello, World!'",
-              language: "ruby",
-            },
-            {
-              code: 'public class Main { \n  public static void main(String[] args) {\n    System.out.println("Hello, World!");\n  }\n}',
-              language: "java",
-            },
-          ]}
-        />
-      </Modal>
     </ConfigProvider>
   );
 };

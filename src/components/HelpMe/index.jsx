@@ -4,12 +4,10 @@ import {
   QuestionCircleOutlined,
   YoutubeOutlined,
   CodeOutlined,
-  MoreOutlined,
-  RobotOutlined,
 } from "@ant-design/icons";
 import { FloatButton, Modal } from "antd";
-import Rosetta from "./../Help/Rosetta";
-import Video from "./../Help/Video";
+import Rosetta from "./Rosetta";
+import Video from "./Video";
 
 const transaltions = [
   {
@@ -45,20 +43,11 @@ const HelpMe = () => {
         <Rosetta transaltions={transaltions} />
       </Modal>
       <FloatButton
-        icon={<RobotOutlined />}
-        type="default"
-        // onClick={() => setRosettaCardModelOpen(true)}
-        style={{
-          right: 24,
-        }}
-        tooltip="Ask for help"
-      ></FloatButton>
-      <FloatButton
         icon={<CodeSandboxOutlined />}
         type="default"
         onClick={() => setRosettaCardModelOpen(true)}
         style={{
-          right: 24 + 72,
+          right: 24,
         }}
         tooltip="Translate the code from one language to another"
       ></FloatButton>
@@ -76,7 +65,7 @@ const HelpMe = () => {
         type="default"
         onClick={() => setYoutubeVideosModelOpen(true)}
         style={{
-          right: 24 + 72 * 2,
+          right: 24 + 72,
         }}
         tooltip="Youtube Tutorials"
       ></FloatButton>
@@ -85,7 +74,7 @@ const HelpMe = () => {
         type="default"
         // onClick={callBack}
         style={{
-          right: 24 + 72 * 3,
+          right: 24 + 72 * 2,
         }}
         tooltip="Hints"
       ></FloatButton>
@@ -94,7 +83,7 @@ const HelpMe = () => {
         type="default"
         // onClick={}
         style={{
-          right: 24 + 72 * 4,
+          right: 24 + 72 * 3,
         }}
         tooltip="Run the code"
       ></FloatButton>

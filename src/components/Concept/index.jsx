@@ -1,5 +1,4 @@
 import ConceptCard from "./Card";
-import VideoCard from "../Video";
 import ConceptTag from "./Tag";
 
 const conceptTagFactory = (name) => {

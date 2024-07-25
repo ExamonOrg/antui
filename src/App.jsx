@@ -4,6 +4,7 @@ import { ConfigProvider, Layout } from "antd";
 import HelpMe from "./components/HelpMe";
 import NavBar from "./components/NavBar";
 import Trivia from "./components/Trivia";
+import CodeRunner from "./components/CodeRunner";
 
 const { Header, Footer, Content } = Layout;
 
@@ -23,6 +24,7 @@ const App = () => {
         <Layout style={layoutStyle}>
           <Content style={contentStyle}>
             <NavBar />
+
             <Trivia />
             <HelpMe />
           </Content>

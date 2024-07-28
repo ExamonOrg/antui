@@ -8,29 +8,17 @@ import {
 import { FloatButton, Modal } from "antd";
 import Rosetta from "./Rosetta";
 import Video from "./Video";
+import CodeRunner from "../CodeRunner";
+import CustomMarkdown from "../CustomMarkdown";
 
-const transaltions = [
-  {
-    code: 'print("Hello, World!")',
-    language: "python",
-  },
-  {
-    code: 'console.log("Hello, World!")',
-    language: "javascript",
-  },
-  {
-    code: "print 'Hello, World!'",
-    language: "ruby",
-  },
-  {
-    code: 'public class Main { \n  public static void main(String[] args) {\n    System.out.println("Hello, World!");\n  }\n}',
-    language: "java",
-  },
-];
-
-const HelpMe = () => {
+const HelpMe = ({ item }) => {
   const [rosettaCardModelOpen, setRosettaCardModelOpen] = useState(false);
   const [youtubeVideosModelOpen, setYoutubeVideosModelOpen] = useState(false);
+  const [codeSnippetsOpen, setCodeSnippetsOpen] = useState(false);
+  const [hintsOpen, setHintsOpen] = useState(false);
+
+  const incrementor = (i) =>  24 + 48 * i;
+
   return (
     <>
       <Modal
@@ -40,14 +28,14 @@ const HelpMe = () => {
         onCancel={() => setRosettaCardModelOpen(false)}
         footer={null}
       >
-        <Rosetta transaltions={transaltions} />
+        <Rosetta translations={item.translations} />
       </Modal>
       <FloatButton
         icon={<CodeSandboxOutlined />}
         type="default"
         onClick={() => setRosettaCardModelOpen(true)}
         style={{
-          right: 24,
+          right: incrementor(0),
         }}
         tooltip="Translate the code from one language to another"
       ></FloatButton>
@@ -58,32 +46,54 @@ const HelpMe = () => {
         onCancel={() => setYoutubeVideosModelOpen(false)}
         footer={null}
       >
-        <Video videos={["LWdsF79H1Pg"]} />
+        <Video videos={item.youtubeVideos} />
       </Modal>
       <FloatButton
         icon={<YoutubeOutlined />}
         type="default"
         onClick={() => setYoutubeVideosModelOpen(true)}
         style={{
-          right: 24 + 72,
+          right: incrementor(1),
         }}
         tooltip="Youtube Tutorials"
       ></FloatButton>
+      <Modal
+        title="Hints"
+        open={hintsOpen}
+        onOk={() => setHintsOpen(false)}
+        onCancel={() => setHintsOpen(false)}
+        footer={null}
+      >
+        {item?.hints &&
+          item.hints.map((hint, index) => {
+            return <CustomMarkdown key={index}>{hint}</CustomMarkdown>;
+          })}
+      </Modal>
       <FloatButton
         icon={<QuestionCircleOutlined />}
         type="default"
-        // onClick={callBack}
+        onClick={() => setHintsOpen(true)}
         style={{
-          right: 24 + 72 * 2,
+          right: incrementor(2),
         }}
         tooltip="Hints"
       ></FloatButton>
+      <Modal
+        title="Code Snippets"
+        open={codeSnippetsOpen}
+        width={"fit-content"}
+        onOk={() => setCodeSnippetsOpen(false)}
+        onCancel={() => setCodeSnippetsOpen(false)}
+        footer={null}
+      >
+        <CodeRunner code={item.code} snippets={item.codeSnippets} />
+      </Modal>
       <FloatButton
         icon={<CodeOutlined />}
         type="default"
-        // onClick={}
+        onClick={() => setCodeSnippetsOpen(true)}
         style={{
-          right: 24 + 72 * 3,
+          right: incrementor(3),
         }}
         tooltip="Run the code"
       ></FloatButton>

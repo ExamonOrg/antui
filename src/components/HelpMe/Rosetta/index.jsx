@@ -1,4 +1,4 @@
-import { Flex, Radio, Space } from "antd";
+import { Flex, Radio, Space, Segmented } from "antd";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {
   JavaScriptOutlined,
@@ -18,29 +18,24 @@ const languageIcons = {
   python: <PythonOutlined />,
 };
 
-const Rosetta = ({ transaltions }) => {
-  const [translation, setTranslation] = useState(transaltions[0]);
+const Rosetta = ({ translations }) => {
+  const [translation, setTranslation] = useState(translations[2]);
   return (
     <div>
-      <Flex gap="middle" align="center">
-        <Radio.Group defaultValue={translation}>
-          {transaltions.map((t) => {
-            return (
-              <Radio.Button
-                value={t.language}
-                onClick={() => {
-                  setTranslation(t);
-                }}
-              >
-                <Space>
-                  {languageIcons[t.language]}
-                  <span>{t.language}</span>
-                </Space>
-              </Radio.Button>
-            );
-          })}
-        </Radio.Group>
-      </Flex>
+      <Segmented
+        size="large"
+        defaultValue={translation}
+        options={translations.map((t) => {
+          return {
+            label: languageIcons[t.language],
+            value: t,
+          };
+        })}
+        onChange={(value) => {
+          setTranslation(value);
+        }}
+      />
+
       <SyntaxHighlighter
         language={translation.language}
         wrapLines={true}

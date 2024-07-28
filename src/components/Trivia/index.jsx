@@ -12,7 +12,7 @@ const mockData = [
   { value: "Hi World", correct: false, disabled: false },
 ];
 
-const Trivia = () => {
+const Trivia = ({ item }) => {
   const [options, setOptions] = useState(mockData);
   const callBack = () => {
     setOptions(
@@ -46,7 +46,7 @@ const Trivia = () => {
         wrapLongLines={true}
         showLineNumbers={false}
       >
-        {'def f1():\n    return "Hello, World!"\n\nprint(f1())'}
+        {item.code}
       </SyntaxHighlighter>
 
       <Space direction="vertical" size="middle" style={{ display: "flex" }}>

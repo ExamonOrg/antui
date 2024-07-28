@@ -1,4 +1,5 @@
-import { Flex, Button } from "antd";
+import React, { useState } from "react";
+import { Flex, Button, Badge } from "antd";
 import {
   SmileOutlined,
   MehOutlined,
@@ -13,15 +14,27 @@ const emojiLookup = {
   smile: <SmileOutlined />,
 };
 
+const EmojiIcon = ({ type }) => {
+  const [count, setCount] = useState(0);
+  return (
+    <Badge count={count}>
+      <Button
+        value={type}
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        {emojiLookup[type]}
+      </Button>
+    </Badge>
+  );
+};
+
 const EmojiBar = () => {
   return (
     <Flex gap="middle" align="center">
       {["dislike", "meh", "frown", "smile"].map((t) => {
-        return (
-          <Button value={t} onClick={() => {}}>
-            {emojiLookup[t]}
-          </Button>
-        );
+        return <EmojiIcon key={t} type={t} />
       })}
     </Flex>
   );

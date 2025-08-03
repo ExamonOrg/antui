@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Space, Flex } from "antd";
 import EmojiBar from "./EmojiBar";
 import AnswerQuestionButton from "./AnswerQuestionButton";
@@ -22,6 +22,12 @@ const buildChoices = (item) => {
 
 const Trivia = ({ item }) => {
   const [options, setOptions] = useState(buildChoices(item));
+  
+  // Update options when item changes
+  useEffect(() => {
+    setOptions(buildChoices(item));
+  }, [item]);
+  
   const callBack = () => {
     setOptions(
       [...options].map((option) => {

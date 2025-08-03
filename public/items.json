@@ -1,4 +1,5 @@
-{
+[
+  {
     "code": "def f1():\n    return 'Hello'",
     "options": ["None", "Hello", "Hello, World!", "Hi Wor.  ld this is me"],
     "answer": "Hello, World!!!",
@@ -6,4 +7,14 @@
       "This code defines a function f1 that returns a string.",
       "The function is then called and the return value is printed to standard out."
     ]
+  },
+  {
+    "code": "def f2():\n    return 'Hello'",
+    "options": ["None", "Hello", "Hello, World!", "Hi Wor.  ld this is me"],
+    "answer": "Hello, World!!!",
+    "hints": [
+      "This code defines a function f1 that returns a string.",
+      "The function is then called and the return value is printed to standard out."
+    ]
   }
+]

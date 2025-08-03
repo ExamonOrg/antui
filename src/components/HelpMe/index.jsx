@@ -21,7 +21,7 @@ const HelpMe = ({ item }) => {
 
   return (
     <>
-      <Modal
+      {/* <Modal
         title="Code Translations"
         open={rosettaCardModelOpen}
         onOk={() => setRosettaCardModelOpen(false)}
@@ -56,7 +56,7 @@ const HelpMe = ({ item }) => {
           right: incrementor(1),
         }}
         tooltip="Youtube Tutorials"
-      ></FloatButton>
+      ></FloatButton> */}
       <Modal
         title="Hints"
         open={hintsOpen}
@@ -88,7 +88,7 @@ const HelpMe = ({ item }) => {
       >
         <CodeRunner code={item.code} snippets={item.codeSnippets} />
       </Modal>
-      <FloatButton
+      {/* <FloatButton
         icon={<CodeOutlined />}
         type="default"
         onClick={() => setCodeSnippetsOpen(true)}
@@ -96,7 +96,7 @@ const HelpMe = ({ item }) => {
           right: incrementor(3),
         }}
         tooltip="Run the code"
-      ></FloatButton>
+      ></FloatButton> */}
     </>
   );
 };

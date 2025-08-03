@@ -9,11 +9,19 @@ const mockData = [
   { value: "None", correct: false, disabled: false },
   { value: "Hello", correct: false, disabled: false },
   { value: "Hello, World!", correct: true, disabled: false },
-  { value: "Hi World", correct: false, disabled: false },
+  { value: "Hi World to the world", correct: false, disabled: false },
 ];
 
+const buildChoices = (item) => {
+    let incorrect = item.options.map((o) => {
+      return { value: o, correct: false, disabled: false }
+    })
+
+    return incorrect.concat({ value: item.answer, correct: true, disabled: false })
+}
+
 const Trivia = ({ item }) => {
-  const [options, setOptions] = useState(mockData);
+  const [options, setOptions] = useState(buildChoices(item));
   const callBack = () => {
     setOptions(
       [...options].map((option) => {
@@ -33,12 +41,6 @@ const Trivia = ({ item }) => {
       size="large"
     >
       <Flex justify="space-between">
-        <Space>
-          {["print", "string literal", "standard out"].map((concept) =>
-            conceptTagFactory(concept)
-          )}
-        </Space>
-        <EmojiBar />
       </Flex>
       <SyntaxHighlighter
         language="python"

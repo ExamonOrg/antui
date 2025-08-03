@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Space, Flex } from "antd";
-import EmojiBar from "./EmojiBar";
 import AnswerQuestionButton from "./AnswerQuestionButton";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import conceptTagFactory from "../Concept";
-
-const mockData = [
-  { value: "None", correct: false, disabled: false },
-  { value: "Hello", correct: false, disabled: false },
-  { value: "Hello, World!", correct: true, disabled: false },
-  { value: "Hi World to the world", correct: false, disabled: false },
-];
 
 const buildChoices = (item) => {
     let incorrect = item.options.map((o) => {
@@ -21,13 +12,6 @@ const buildChoices = (item) => {
 }
 
 const Trivia = ({ item }) => {
-  const [options, setOptions] = useState(buildChoices(item));
-  
-  // Update options when item changes
-  useEffect(() => {
-    setOptions(buildChoices(item));
-  }, [item]);
-  
   const callBack = () => {
     setOptions(
       [...options].map((option) => {
@@ -46,8 +30,7 @@ const Trivia = ({ item }) => {
       }
       size="large"
     >
-      <Flex justify="space-between">
-      </Flex>
+      <Flex justify="space-between"></Flex>
       <SyntaxHighlighter
         language="python"
         wrapLines={true}
@@ -58,8 +41,9 @@ const Trivia = ({ item }) => {
       </SyntaxHighlighter>
 
       <Space direction="vertical" size="middle" style={{ display: "flex" }}>
-        {options.map((option) => (
+        {buildChoices(item).map((option, index) => (
           <AnswerQuestionButton
+            key={`option${index}`}
             value={option.value}
             correct={option.correct}
             callBack={callBack}
